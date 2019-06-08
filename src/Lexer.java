@@ -539,7 +539,6 @@ public class Lexer {
 
 
 
-
     public static void main(String[] args) throws IOException {
         String file = "C:\\Users\\Влад\\Desktop\\Lexer\\src\\file.txt";
                         //String out ="C:\Users\Влад\Desktop\Lexer\src\file.txt";
@@ -631,8 +630,8 @@ public class Lexer {
 
         }
 
-        eval = eval(tokens,idTable);
-        System.out.println(eval);
+        //eval = eval(tokens,idTable);
+        //System.out.println(eval);
 
         if(lbrace != rbrace || lbracet != rbracet || lparen != rparen) {
             printError(String.valueOf(tokens.get(0).getToken()), String.valueOf(tokens.get(1).getToken()),
@@ -643,11 +642,12 @@ public class Lexer {
 
 
         System.out.println("_____________");
+        System.out.println("\n\nТаблица символов\n\n");
         for (char c='a'; c<='z'; c++) {
             //System.out.println("code="+(int)c+"\tsumbol="+c + " " + (char)80);
         }
         for(Map.Entry m:idTable.entrySet()){
-            //System.out.println(m.getKey()+" "+m.getValue()); //_______________ВЫВОД ТАБЛИЦЫ СИМВОЛОВ____________________
+            System.out.println(m.getKey()+" "+m.getValue()); //_______________ВЫВОД ТАБЛИЦЫ СИМВОЛОВ____________________
         }
 
 //        bt.traversePreOrder(bt.root);
@@ -655,8 +655,8 @@ public class Lexer {
 //        bt.traverseInOrder(bt.root);
 //        System.out.println( );
 //        bt.traversePostOrder(bt.root);
-        System.out.println( );
-        //bt.traverseLevelOrder(); // _________________________________________ВЫВОД ПАРСЕРА______________________________
+        System.out.println( "\n\n Парсер\n\n");
+        bt.traverseLevelOrder(); // _________________________________________ВЫВОД ПАРСЕРА______________________________
 
 
 

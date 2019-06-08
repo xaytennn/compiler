@@ -5,6 +5,9 @@ int main () {
     int i = 2;
     int j = 0;
     int a[5] = 1, 2, 3, 18, 2;
+    while(i < 5){
+        int w = 0;
+    }
     printf("%d ", j);
 
 
