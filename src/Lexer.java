@@ -174,7 +174,7 @@ public class Lexer {
                  buf2+=input.charAt(i);
                  buf2+=input.charAt(i+1);
                  result.add(new Token(Type.DECREMENT, buf2, i, row, col));
-                 i++;//ЕСЛИ ЧТО-ТО СЛОМАЕТСЯ!!!!!!!!!!!!!!!!!!!!
+                 i++;//
              }
             else if(input.charAt(i) == '+' && input.charAt(i+1) == '+'){
                  buf2="";
@@ -182,7 +182,7 @@ public class Lexer {
                  buf2+=input.charAt(i);
                  buf2+=input.charAt(i+1);
                  result.add(new Token(Type.INCREMENT, buf2, i, row, col));
-                 i++;//ЕСЛИ ЧТО-ТО СЛОМАЕТСЯ!!!!!!!!!!!!!!!!!!!!
+                 i++;//
              }
              else if(input.charAt(i) == '<' || input.charAt(i) == '>' || input.charAt(i) == '=' || input.charAt(i) == '-' ||
                      input.charAt(i) == '*' || input.charAt(i) == '/' || input.charAt(i) == '+' || input.charAt(i)==','
@@ -199,7 +199,7 @@ public class Lexer {
                      buf += input.charAt(i);
                      i++;
                  }
-                 i--;//ЕСЛИ ЧТО-ТО СЛОМАЕТСЯ
+                 i--;//
                  str1 = Eq(buf);
                  result.add(new Token(str1, buf, i, row, col));
              }
@@ -212,7 +212,7 @@ public class Lexer {
     }
 
     /**
-     *       ПАРСЕР
+     *       Parser
      *____________________________________________________________________________________________________________
      */
 
@@ -301,7 +301,7 @@ public class Lexer {
     }
 
     /**
-     *      ДЕРЕВЬЯ
+     *      Tree
      * ____________________________________________________________________________________________________________
      */
 
@@ -388,7 +388,7 @@ public class Lexer {
     }
 
     /**
-     *      АССЕМБЛЕР
+     *      Assembler
      * _____________________________________________________________________________________________________________
      */
     public static String eval(List<Token> tokens, HashMap idTable){//eval(String terminalName, String noterminal, String nextTerminalName){
@@ -546,6 +546,9 @@ public class Lexer {
                         //FileWriter fstream = new FileWriter(out);
                         //BufferedWriter out1 = new BufferedWriter(fstream);
         final LineNumberReader lnr = new LineNumberReader(new FileReader(file));
+
+
+
         String str = "", eval = "";
         List<Token> tokens = lex(str);
         //считывание строки и сбор токенов
@@ -561,7 +564,7 @@ public class Lexer {
         BinaryTree bt = new BinaryTree();
         int level = 0;
         int lbrace = 0, rbrace = 0, lbracet = 0, rbracet = 0, lparen = 0, rparen = 0;
-        HashMap<Integer, List<String>> idTable = new HashMap<>();
+        HashMap<Integer, List<String>> idTable = new HashMap<Integer, List<String>>();
         for (int q = 0; q < tokens.size()-1; q++) {//не смотрю последний символ
             int j = getRule(String.valueOf(tokens.get(q).getToken()),tokens.get(q).getValue(),
                     String.valueOf(tokens.get(q+1).getToken()));
@@ -587,7 +590,7 @@ public class Lexer {
                 bt.add(String.valueOf(tokens.get(q).getToken()), tokens.get(q).getValue(), "no");
 
 
-            //_______________________ТАБЛИЦА СИМВОЛОВ____________________________________
+            //_______________________Table of symbols____________________________________
 
             if(String.valueOf(tokens.get(q).getToken()).equals("LBRACE")) {level++; lbrace++;}
             if(String.valueOf(tokens.get(q).getToken()).equals("RBRACE")) {level--; rbrace++;}
@@ -624,7 +627,7 @@ public class Lexer {
                 }
             }
             if(String.valueOf(tokens.get(q).getToken()).equals("RBRACE")){
-                //idTable.remove(level+1);//_________________________________УДАЛЕНИЕ ИЗ ТАБЛИЦЫ СИМВОЛОВ____________
+                //idTable.remove(level+1);//_________________________________Delete from table of symbols____________
             }
 
 
@@ -647,7 +650,7 @@ public class Lexer {
             //System.out.println("code="+(int)c+"\tsumbol="+c + " " + (char)80);
         }
         for(Map.Entry m:idTable.entrySet()){
-            System.out.println(m.getKey()+" "+m.getValue()); //_______________ВЫВОД ТАБЛИЦЫ СИМВОЛОВ____________________
+            System.out.println(m.getKey()+" "+m.getValue()); //_______________Output from table of symbols____________________
         }
 
 //        bt.traversePreOrder(bt.root);
